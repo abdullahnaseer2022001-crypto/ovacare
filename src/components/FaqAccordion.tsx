@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { FAQS, STORE_DETAILS } from '../data/productData';
-import { ChevronDown, HelpCircle, PhoneCall, MessageCircle } from 'lucide-react';
+import { FAQS } from '../data/productData';
+import { ChevronDown, HelpCircle, MessageCircle } from 'lucide-react';
 
 export const FaqAccordion: React.FC = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(0); // first item open by default
@@ -8,6 +8,16 @@ export const FaqAccordion: React.FC = () => {
   const toggle = (idx: number) => {
     setOpenIdx(openIdx === idx ? null : idx);
   };
+
+  // 1. Quick Questions Array properly defined here
+  const quickQuestions = [
+    { label: "💊 How to use OvaCare daily?", text: "Hi, I want to know how to use OvaCare daily capsules." },
+    { label: "🌿 Are these 100% natural seeds?", text: "Hi, are the seeds in OvaCare 100% natural and safe?" },
+    { label: "📦 Delivery time in Pakistan?", text: "Hi, what is the delivery time across Pakistan for Cash on Delivery?" },
+    { label: "🩸 Help with irregular periods", text: "Hi, can OvaCare help regulate irregular periods and hormonal acne?" }
+  ];
+
+  const whatsappNumber = "923127305519";
 
   return (
     <section id="faqs" className="py-16 bg-[#FAF7F2] relative border-b border-[#3D5A44]/15">
@@ -67,25 +77,49 @@ export const FaqAccordion: React.FC = () => {
           })}
         </div>
 
-        {/* Still Have Questions Card */}
-        <div className="mt-10 p-6 rounded-2xl bg-[#E3EDE4]/50 border border-[#3D5A44]/25 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div>
+        {/* Interactive WhatsApp Questions Card */}
+        <div className="mt-10 p-6 rounded-2xl bg-[#E3EDE4]/50 border border-[#3D5A44]/25 text-center">
+          <div className="mb-4">
             <h4 className="font-display font-bold text-base text-[#223728]">
               Still have a specific question about your symptoms?
             </h4>
             <p className="text-xs text-[#587960] mt-0.5">
-              Our female health advisors are available on WhatsApp for confidential guidance.
+              Tap any question below to chat instantly with our female health advisors on WhatsApp:
             </p>
           </div>
-          <a
-  href="https://wa.me/923127305519?text=Hi%2C%20I%20have%20a%20question%20about%20my%20PCOS%20symptoms."
-  target="_blank"
-  rel="noopener noreferrer"
-  className="py-2.5 px-4 rounded-xl bg-[#223728] hover:bg-[#152219] text-white text-xs font-bold flex items-center gap-2 whitespace-nowrap"
->
-  <MessageCircle className="w-4 h-4 text-emerald-400" />
-  <span>Chat on WhatsApp</span>
-</a>
+
+          {/* Quick Clickable Question Chips */}
+          <div className="flex flex-wrap justify-center gap-2 mb-4">
+            {quickQuestions.map((item, qIdx) => {
+              const encodedMsg = encodeURIComponent(item.text);
+              const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMsg}`;
+              return (
+                <a
+                  key={qIdx}
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white hover:bg-emerald-50 text-[#223728] border border-[#3D5A44]/20 hover:border-emerald-600 text-xs font-semibold py-2 px-3.5 rounded-xl shadow-xs transition-all flex items-center gap-1.5 active:scale-95"
+                >
+                  <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>{item.label}</span>
+                </a>
+              );
+            })}
+          </div>
+
+          {/* General Custom Question Button */}
+          <div className="flex justify-center">
+            <a
+              href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi, I have a custom question about OvaCare symptoms.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-2.5 px-5 rounded-xl bg-[#223728] hover:bg-[#152219] text-white text-xs font-bold flex items-center gap-2 shadow transition-colors"
+            >
+              <MessageCircle className="w-4 h-4 text-emerald-400" />
+              <span>Or Type Custom Question on WhatsApp</span>
+            </a>
+          </div>
         </div>
 
       </div>
