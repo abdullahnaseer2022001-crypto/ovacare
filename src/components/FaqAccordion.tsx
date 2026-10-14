@@ -88,11 +88,11 @@ export const FaqAccordion: React.FC = () => {
             </p>
           </div>
 
-          {/* Quick Clickable Question Chips */}
+          {/* Quick Clickable Question Chips with Universal Web/App Endpoint */}
           <div className="flex flex-wrap justify-center gap-2 mb-4">
             {quickQuestions.map((item, qIdx) => {
               const encodedMsg = encodeURIComponent(item.text);
-              const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMsg}`;
+              const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMsg}`;
               return (
                 <a
                   key={qIdx}
@@ -111,7 +111,7 @@ export const FaqAccordion: React.FC = () => {
           {/* General Custom Question Button */}
           <div className="flex justify-center">
             <a
-              href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi, I have a custom question about OvaCare symptoms.")}`}
+              href={`https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent("Hi, I have a custom question about OvaCare symptoms.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="py-2.5 px-5 rounded-xl bg-[#223728] hover:bg-[#152219] text-white text-xs font-bold flex items-center gap-2 shadow transition-colors"
