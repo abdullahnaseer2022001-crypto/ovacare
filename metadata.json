@@ -1,0 +1,6 @@
+{
+  "name": "OvaCare Organics - PCOS Support & Herbal Seed Blend",
+  "description": "Premium all-natural herbal seed blend supplement engineered for PCOS hormonal balance, regular menstrual cycles, and metabolic wellness with 6 clinically studied botanical seeds.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
