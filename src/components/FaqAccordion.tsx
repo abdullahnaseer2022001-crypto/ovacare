@@ -78,14 +78,14 @@ export const FaqAccordion: React.FC = () => {
             </p>
           </div>
           <a
-            href={STORE_DETAILS.whatsappUrl}     
-            target="_blank"
-            rel="noopener noreferrer"
-            className="py-2.5 px-4 rounded-xl bg-[#223728] hover:bg-[#152219] text-white text-xs font-bold flex items-center gap-2 whitespace-nowrap shadow-sm"
-          >
-            <MessageCircle className="w-4 h-4 text-emerald-400" />
-            <span>Chat on WhatsApp</span>
-          </a>
+  href="https://wa.me/923127305519?text=Hi%2C%20I%20have%20a%20question%20about%20my%20PCOS%20symptoms."
+  target="_blank"
+  rel="noopener noreferrer"
+  className="py-2.5 px-4 rounded-xl bg-[#223728] hover:bg-[#152219] text-white text-xs font-bold flex items-center gap-2 whitespace-nowrap"
+>
+  <MessageCircle className="w-4 h-4 text-emerald-400" />
+  <span>Chat on WhatsApp</span>
+</a>
         </div>
 
       </div>
